@@ -3,21 +3,20 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      # <app-id>_<web-service-name>_1
+      # <app-id>_<web-service-name>_1  (note the trailing "_1")
+      # Our service below is "web", app-id is "claudia-claude-gui":
       APP_HOST: claudia-claude-gui_web_1
       APP_PORT: 8088
 
   web:
-    # IMPORTANT: set this to YOUR pushed image. Example below assumes GHCR under your username.
-    # For local testing a tag is OK; for PRs pin with @sha256:<multi-arch-digest>.
-    image: ghcr.io/harmalh/claudia-claude-gui:1.0.0
+    # Multi-arch image with pinned digest for deterministic installs
+    image: ghcr.io/harmalh/claudia-claude-gui:1.0.0@sha256:251718d0fab77b1c1d1bbcb232553d8402df04e24573cf345bd4cdfba5521e65
     restart: on-failure
     stop_grace_period: 1m
     user: "1000:1000"
     environment:
-      # noVNC listens on 8088 inside the container
-      VNC_PASSWORD: ${APP_PASSWORD}
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
-    # If you need persistence, uncomment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - VNC_PASSWORD=${VNC_PASSWORD}
+    # Persist optional app data/logs:
     # volumes:
     #   - ${APP_DATA_DIR}/data:/data

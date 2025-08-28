@@ -1,24 +1,23 @@
-manifestVersion: 1
 id: claudia-claude-gui
 name: Claudia + Claude Code (GUI)
 version: "1.0.0"
 tagline: "Run Claudia's desktop UI with Claude Code inside your browser"
-description: >-
+description: >
   A desktop-like GUI for Claudia (Tauri) delivered via noVNC, with the official
   Claude Code CLI preinstalled. Set ANTHROPIC_API_KEY and (optionally) VNC_PASSWORD
   in the app's settings. Access over Tailscale or your LAN; do not expose publicly.
 developer: harmalh
 website: https://github.com/getAsterisk/claudia
-repo: https://github.com/harmalh/umbrel-apps-claudia-claude-gui
-support: https://github.com/harmalh/umbrel-apps-claudia-claude-gui/issues
 license: AGPL-3.0-or-later
 category: ai
 icon: icon.svg
-port: 39322
+port: 3002
 path: "/vnc.html"
+repo: https://github.com/harmalh/umbrel-apps-claudia-claude-gui
+support: https://github.com/harmalh/umbrel-apps-claudia-claude-gui/issues
 gallery: []
 defaultUsername: ""
 defaultPassword: ""
-dependencies: []
-releaseNotes: >-
+releaseNotes: >
   Initial release.
+dependencies: []
